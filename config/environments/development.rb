@@ -34,4 +34,18 @@ LinkedDevelopmentPmd::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+
+  PublishMyData.configure do |config|
+    config.sparql_endpoint = 'http://localhost:3030/linkeddev-dev/sparql'
+    config.local_domain = 'data.linked-development.org'
+    
+    config.downloads_s3_bucket = "opendatascotland-dumps" # the s3 bucket for dataset dumps. Used for redirecting to the right location for dataset downloads.
+    config.aws_access_key_id = "AKIAIUNIRXSGV2IACNTQ" # the access key for the s3 bucket
+    config.aws_secret_access_key = "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" # the secret key for the s3 bucket
+    
+    config.tripod_cache_store =  nil
+    config.sparql_timeout_seconds = 7
+  end
+
 end

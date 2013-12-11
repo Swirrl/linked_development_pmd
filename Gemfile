@@ -7,32 +7,19 @@ gem 'rails', '3.2.15'
 
 gem 'sqlite3'
 
+gem 'tripod'
+gem 'publish_my_data', :git => 'git@github.com:Swirrl/publish_my_data.git', :branch => 'legacy'
+gem 'publish_my_data_enterprise', :git => 'git@github.com:Swirrl/publish_my_data_enterprise.git', :branch => 'master'
+
+gem 'jquery-rails'
+gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git", :branch => 'ead49c'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+  gem 'yui-compressor' #note:requires java
 end
 
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+group :development do
+  gem 'capistrano'
+end
