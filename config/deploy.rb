@@ -6,6 +6,7 @@ set :default_stage, "staging"
 load 'deploy/assets'
 
 # rvm stuff
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require "rvm/capistrano"
 set :rvm_ruby_string, '1.9.3-p194'        # Or whatever env you want it to run in.
 set :rvm_type, :user
@@ -18,9 +19,9 @@ default_run_options[:pty] = true
 
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 
-server "144.76.154.208", :app, :web, :db, :primary => true
+server "digitalsocial.eu", :app, :web, :db, :primary => true
 
-set :repository,  "git@github.com:Swirrl/linkeddevelopment_pmd.git"
+set :repository,  "git@github.com:Swirrl/linked_development_pmd.git"
 set :scm, "git"
 set :ssh_options, {:forward_agent => true, :keys => "~/.ssh/id_rsa" }
 set :user, "rails"
