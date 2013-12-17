@@ -1,7 +1,7 @@
 require 'bundler/capistrano' # enable bundler stuff!
 require 'capistrano/ext/multistage'
-set :stages, %w(production staging)
-set :default_stage, "staging"
+set :stages, %w(production)
+set :default_stage, "production"
 
 load 'deploy/assets'
 

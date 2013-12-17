@@ -69,13 +69,13 @@ LinkedDevelopmentPmd::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   PublishMyData.configure do |config|
-    config.sparql_endpoint = 'http://localhost:9990'
+    config.sparql_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/sparql'
 
     config.local_domain = 'linkeddevelopment.org'
     config.downloads_s3_bucket = "xxx" # the s3 bucket for dataset dumps. Used for redirecting to the right location for dataset downloads.
     config.aws_access_key_id = "xxx" # the access key for the s3 bucket
     config.aws_secret_access_key = "xxx" # the secret key for the s3 bucket
-    config.tripod_cache_store =  Tripod::CacheStores::MemcachedCacheStore.new('localhost:11212')
+    config.tripod_cache_store =  Tripod::CacheStores::MemcachedCacheStore.new('localhost:11215')
     config.sparql_timeout_seconds = 15
   end
 
