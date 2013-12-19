@@ -8,6 +8,9 @@ LinkedDevelopmentPmd::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.assets.css_compressor = :yui
+  config.assets.js_compressor = :yui
+
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
@@ -64,4 +67,19 @@ LinkedDevelopmentPmd::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  PublishMyData.configure do |config|
+    config.sparql_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/sparql'
+
+    config.local_domain = 'linkeddevelopment.org'
+    config.downloads_s3_bucket = "xxx" # the s3 bucket for dataset dumps. Used for redirecting to the right location for dataset downloads.
+    config.aws_access_key_id = "xxx" # the access key for the s3 bucket
+    config.aws_secret_access_key = "xxx" # the secret key for the s3 bucket
+    config.tripod_cache_store =  Tripod::CacheStores::MemcachedCacheStore.new('localhost:11215')
+    config.sparql_timeout_seconds = 15
+  end
+
+  PublishMyDataEnterprise.configure do |config|
+    # config.private_api_host = 'linkeddevelpoment-api.publishmydata.com' if defined?(config.private_api_host)
+  end
 end

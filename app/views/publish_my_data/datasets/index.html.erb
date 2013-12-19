@@ -1,0 +1,50 @@
+<% page_title "Linked Open International Development Data" %>
+
+<article class="data home">
+
+  <%= top_section("Linked Open International Development Data")%>
+
+  <div class="row container">
+    <div class="eleven columns">
+      <p style="font-size:18px">
+        This platform has been developed as an incubator for a number of linked datasets of value to the International Development community. It currently hosts data from <a href="http://r4d.dfid.gov.uk/">Research for Development</a> and <a href="http://www.eldis.org/">ELDIS</a>.
+      </p>
+      <p>
+        The data is available in multiple machine-readable formats including JSON, RDF, Turtle and N-triples.
+        The available formats are indicated at the foot of each page. We also provide a <a href="/sparql">SPARQL 1.1 Endpoint</a> for querying the data.
+        There's also a <a href="/docs">simple API</a> based on the IDS API for accessing data on publications.
+      </p>
+      <p>
+        This is a research &amp; development project supported by <a href="http://r4d.dfid.gov.uk/">Research for Development</a> and carried out by <a href="http://www.swirrl.com">Swirrl</a>, based on an original prototype by <a href="http://practicalparticipation.co.uk">Practical Participation</a>. Questions can be directed to <a href="mailto:hello@swirrl.com">hello@swirrl.com</a>. Code for the Linked Development platform can be found on <a href="https://github.com/Swirrl/linked_development_api">GitHub</a>.
+      </p>
+      <p>
+        Below are the datasets in this site. Each dataset has a page with details of its contents and how to access it.
+      </p>
+    </div>
+    <div class="four columns offset-by-one">
+      <h4 style="font-weight:bold; margin-bottom:0;">API Documentation</h4>
+      <p>
+        For full details of how to programatically access the data in this site, please read our <a href="/docs">Developer Documentation</a>.
+      </p>
+      <h4 style="font-weight:bold; margin-bottom:0;">Licence</h4>
+      <p>
+        The majority of the data is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence</a>, but please refer individual datasets for full details.
+    </div>
+  </div>
+
+  <section>
+    <div class="row container">
+      <%= render 'datasets_table',
+        datasets: @datasets,
+        pagination_params: @pagination_params %>
+    </div>
+  </section>
+
+  <%= bottom_formats_section "page of datasets",
+      link_to('N-triples', :format => 'nt', :page => @pagination_params.page, :per_page => @pagination_params.per_page),
+      link_to("Turtle", :format => 'ttl', :page => @pagination_params.page, :per_page => @pagination_params.per_page),
+      link_to("RDF/XML", :format => 'rdf', :page => @pagination_params.page, :per_page => @pagination_params.per_page),
+      link_to("JSON", :format => 'json', :page => @pagination_params.page, :per_page => @pagination_params.per_page)
+  %>
+
+</article>

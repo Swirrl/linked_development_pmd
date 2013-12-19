@@ -1,0 +1,32 @@
+development:
+  sessions:
+    default:
+      database: linked_development_pmd_development
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  # Configure Mongoid specific options. (optional)
+  options:
+
+production:
+  sessions:
+    default:
+      database: linked_development_pmd_production
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  # Configure Mongoid specific options. (optional)
+  options:
+
+staging:
+  sessions:
+    default:
+      database: linked_development_pmd_staging
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  # Configure Mongoid specific options. (optional)
+  options:

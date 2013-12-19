@@ -5,9 +5,7 @@ gem 'rails', '3.2.15'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
-gem 'tripod'
+gem 'tripod', '0.8.0'
 gem 'publish_my_data', :git => 'git@github.com:Swirrl/publish_my_data.git', :branch => 'legacy'
 gem 'publish_my_data_enterprise', :git => 'git@github.com:Swirrl/publish_my_data_enterprise.git', :branch => 'master'
 
@@ -21,5 +19,5 @@ group :assets do
 end
 
 group :development do
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.0'
 end
