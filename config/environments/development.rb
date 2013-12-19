@@ -45,7 +45,7 @@ LinkedDevelopmentPmd::Application.configure do
     config.aws_secret_access_key = "usFHIgywtmapIR/vV3VLuVwXEheeH2mQZ2Hryp65" # the secret key for the s3 bucket
     
     config.tripod_cache_store =  nil
-    config.sparql_timeout_seconds = 15
+    config.sparql_timeout_seconds = 25
   end
 
   Tripod.configure do |config|
