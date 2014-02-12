@@ -71,7 +71,7 @@ LinkedDevelopmentPmd::Application.configure do
   PublishMyData.configure do |config|
     config.sparql_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/sparql'
 
-    config.local_domain = 'linkeddevelopment.org'
+    config.local_domain = 'linked-development.org'
     config.downloads_s3_bucket = "xxx" # the s3 bucket for dataset dumps. Used for redirecting to the right location for dataset downloads.
     config.aws_access_key_id = "xxx" # the access key for the s3 bucket
     config.aws_secret_access_key = "xxx" # the secret key for the s3 bucket
@@ -81,5 +81,9 @@ LinkedDevelopmentPmd::Application.configure do
 
   PublishMyDataEnterprise.configure do |config|
     # config.private_api_host = 'linkeddevelpoment-api.publishmydata.com' if defined?(config.private_api_host)
+  end
+
+  Tripod.configure do |config|
+    config.update_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/update'
   end
 end
