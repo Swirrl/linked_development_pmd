@@ -73,7 +73,7 @@ PublishMyData.configure do |config|
   config.sparql_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/sparql'
   config.local_domain = 'linked-development.org'
   config.tripod_cache_store =  Tripod::CacheStores::MemcachedCacheStore.new('localhost:11215')
-  config.sparql_timeout_seconds = 20
+  config.sparql_timeout_seconds = 35
 end
 
 Tripod.configure do |config|
