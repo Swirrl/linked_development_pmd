@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
 LinkedDevelopmentPmd::Application.routes.draw do
 
-  match "/" => redirect('/data'), :as => 'home' # don't call this root - having two routes confuses devise (there's one in pmd_enterprise too).
+  get '/', to: redirect('/data'), as: :home # use the data catalogue
 
-  scope '/api' do
-    get '/docs', to: 'api_doc#index', as: :api_docs
+  scope '/linked-develpment-api/' do
+    get '/docs', to: 'api_doc#index', as: :linked_development_api_docs
   end
-
-  mount PublishMyDataEnterprise::Engine, at: "/" , as: 'publish_my_data_enterprise'
-  mount PublishMyData::Engine, at: "/"
   
+  mount PublishMyData::Engine, at: "/" 
 end

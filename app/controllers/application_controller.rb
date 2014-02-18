@@ -1,5 +1,5 @@
-class ApplicationController < PublishMyData::ApplicationController
+class ApplicationController < ActionController::Base
+  protect_from_forgery
   helper PublishMyData::Engine.helpers
-  helper PublishMyDataEnterprise::Engine.helpers
   helper :all
 end

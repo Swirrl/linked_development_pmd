@@ -12,5 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require publish_my_data_enterprise
 //= require_tree .

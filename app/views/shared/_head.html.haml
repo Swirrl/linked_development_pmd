@@ -1,0 +1,10 @@
+%head
+	%title
+		= appname
+		= yield :page_title
+	
+	= yield :page_description
+
+	= javascript_include_tag :modernizr
+	= javascript_include_tag :publish_my_data
+	= stylesheet_link_tag :application
