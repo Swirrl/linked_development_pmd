@@ -1,0 +1,564 @@
+%section
+  %h2 Linked Development API
+
+  :markdown
+
+    The Linked Development API is a [clone of the IDS API](http://api.ids.ac.uk/docs/).
+
+    It has been designed to allow applications written for the IDS API to be simply modified to talk to a large collection of documents and resources drawn from across the datasets including in Linked Development.
+    
+%nav.contents
+  %h2 Contents
+
+  %h3
+    1 -
+    %strong General Overview
+
+  %ul
+    %li
+      %a(href="#accessing-the-api")
+        1.1
+        %strong Accessing the API
+    %li
+      %a(href="#api-url-patterns")
+        1.2
+        %strong API URL Patterns
+    %li
+      %a(href="#multiple-results-metadata")
+        1.3
+        %strong Multiple Results Metadata
+        
+  %h3
+    2 -
+    %strong Supported Requests
+  %ul
+    %li
+      %a(href="#supported-requests")
+        3.1
+        %strong Documents
+    %li
+      %a(href="#api-url-patterns")
+        3.2
+        %strong Themes
+    %li
+      %a(href="#api-url-patterns")
+        3.2
+        %strong Countries
+    %li
+      %a(href="#api-url-patterns")
+        3.2
+        %strong Regions
+    %li
+      %a(href="#api-url-patterns")
+        3.2
+        %strong Research Outputs
+        
+  %h3
+    3 -
+    %strong Error Messages
+
+  %ul
+    %li
+      %a(href="#accessing-the-api")
+        3.1
+        %strong HTTP Error Codes
+    %li
+      %a(href="#api-url-patterns")
+        3.2
+        %strong Response Messages
+        
+%section
+  %h2 1 - Linked Development API
+
+  .subsection#accessing-the-api
+    %h3
+      1.1
+      %strong Accessing the API
+
+    %p The API has been designed to allow applications written for the IDS API to be simply modified to talk to a large collection of documents and resources drawn from across the datasets including in Linked Development.  The API supports both JSON and XML response types across all of our endpoints.
+
+  .subsection#api-url-patterns
+    %h3
+      1.2
+      %strong API URL Patterns
+
+    %p We follow the IDS API's URL pattern for modelling our request methods, typically this means that API methods follow the following structure:
+
+    %code /openapi/{graph}/{function}/{object}/{identifier_or_type}/[detail][format]?{option_parameters}
+
+    %table
+      %thead
+        %tr
+          %th Parameter
+          %th Acceptable Values
+          %th Description
+      %tbody
+        %tr
+          %td.details graph
+          %td all, eldis, r4d
+          %td.hardwrap The graph parameter indicates the scope of your query.  There are two main graphs, <strong>r4d</strong> and <strong>eldis</strong> and a union <strong>all</strong> graph for queries that wish to search across both platforms.  The graphs are equivalent to the two primary datasets we hold in our Linked Data store.
+        %tr
+          %td.details function
+          %td get, get_all, search, count
+          %td.hardwrap The function represents the type of query you are performing.  For example a <strong>get</strong> will typically return one result by its id, whilst a <strong>get_all</strong> or a <strong>search</strong> will tend to return many results in a paginated form.  Calls to <strong>count</strong> will return the number of distinct objects that are found to match your query.
+        %tr
+          %td.details object
+          %td themes, documents, regions, countries, research_outputs
+          %td.hardwrap The function represents the type of query you are performing.  For example a <strong>get</strong> will typically return one result by its id, whilst a <strong>get_all</strong> or a <strong>search</strong> will tend to return many results in a paginated form.
+        %tr
+          %td.details identifier_or_type
+          %td N/A
+          %td.hardwrap Typically this parameter is used to refer to a specific object by an identifier for example during a  <strong>get</strong> request.  Sometimes its use is overloaded depending on the function, for example <strong>count</strong> queries use it to specify the object types you are counting.
+        %tr
+          %td.details detail
+          %td short, full 
+          %td.hardwrap This is an optional parameter that is supported on all routes.  It allows the requestor to specify how much detail comes back with each request.  If this parameter is not supplied it will default to <strong>short</strong>.  Choosing a <strong>full</strong> level of detail will return a more complicated document back consisting of much more information than in the <strong>short</strong> view.
+        %tr
+          %td.details format
+          %td .json, .xml
+          %td.hardwrap Requests against the API <strong>must</strong> specify a format.  This can be done either by providing the appropriate mime-type as an <strong>Accept</strong> header on the HTTP request, or by appending either .json or .xml to the requests URL string.
+        %tr
+          %td.details option_parameters
+          %td num_results, start_offset ...
+          %td.hardwrap Query string parameters can be provided with some requests to further refine them, however all requests returning many results support pagination via the parameters num_results and start_offset.  For details on specific parameters please refer to the documentation for each object/function.
+
+    
+    %p
+      %strong NOTE: Not all possible combinations of parameters are supported.
+
+  .subsection#api-url-patterns
+    %h3
+      1.3
+      %strong Multiple Results Metadata
+
+    %p All of the routes within the API that return multiple results, such as <strong>get_all</strong>, <strong>search</strong> and <strong>count</strong> return a metadata object which can be used to assist in paginating the results.  
+
+    %p This can be found under a "metadata" key at the top level of the response document.  The metadata object in turn can contain up to four keys:
+
+    %table
+      %thead
+        %tr
+          %th Key
+          %th Value Type
+          %th Always Present
+          %th Description
+      %tbody
+        %tr
+          %td.details num_results
+          %td Integer
+          %td Y
+          %td.hardwrap This value states the total number of results that have been matched.  Responses typically only contain a paginated subset of all the results.
+        %tr
+          %td.details start_offset
+          %td Integer
+          %td Y
+          %td.hardwrap This value states the currently requested offset.  The offset represents the point at which the current pagination window starts amongst the total ordering of results.  
+        %tr
+          %td.details next_page
+          %td URL
+          %td N
+          %td.hardwrap Following this link will retrieve the next page of results.  Users should test for the presence of the <strong>next_page</strong> key before accessing the value.  If the key is not present the current page represents the final page of results.
+        %tr
+          %td.details prev_page
+          %td URL
+          %td N
+          %td.hardwrap Following this link will retrieve the previous page of results.  Users should test for the presence of the <strong>prev_page</strong> key before accessing the value.  If the key is not present the current page represents the first page of results.
+
+%section
+  %h2 2 - Supported Requests
+
+  .subsection#supported-requests
+    %h3
+      2.1
+      %strong Documents
+
+      %h4
+        2.1.1
+        %strong get_all/documents
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %h5 Example Queries
+
+        %p Requesting the first page of all eldis documents at a full level of detail in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development.org/openapi/eldis/get_all/documents/full.json"
+
+        %p Requesting the first page of all r4d documents at a full level of detail in XML format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development.org/openapi/r4d/get_all/documents.xml"
+
+        %p Requesting the first page of all documents at a full level of detail in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl -H "Accept: application/json" "http://linked-development.org/openapi/eldis/get_all/documents/full?num_results=20&start_offset=20"
+
+      %h4
+        2.1.2
+        %strong get/documents
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %h5 Example Queries
+
+        %p Requesting an eldis document by its id (A64559) in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get/documents/A64559/full.json"
+
+        %p Requesting an r4d document by its id (185225) in XML format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/r4d/get/documents/185225/full.xml"
+
+        %p Requesting an r4d document by its id (185225) from the all graph in XML format at a short level of detail:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development.org/openapi/all/get/documents/185225/short.xml"
+
+      %h4
+        2.1.3
+        %strong Counting Documents
+
+        %p Counts are always of documents but by another object criteria, and are therefore not supported on the document routes directly.  Please consult the other object types for how to count documents.
+
+      %h4
+        2.1.4
+        %strong Searching for Documents
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Searches for documents which are part of themes that match the supplied criteria.  Criteria can be combined through conjunction (boolean AND) to narrow results further.
+
+        %table
+          %thead
+            %tr
+              %th Query Parameter
+              %th Supported Value Types
+              %th Supported Graphs
+              %th Description
+          %tbody
+            %tr
+              %td.details q
+              %td Text String
+              %td eldis, r4d, all
+              %td.hardwrap This parameter does a free text query across document titles and abstracts.
+            %tr
+              %td.details country
+              %td ISO2 Country Code, ELDIS Country ID
+              %td eldis, r4d, all
+              %td.hardwrap This parameter narrows results to documents covering the specified country.  ELDIS country ID's can only be used on the eldis and all graphs.  Whilst ISO2 country codes are supported on all graphs.
+            %tr
+              %td.details region
+              %td UN Code, ELDIS region ID
+              %td eldis, r4d, all              
+              %td.hardwrap This parameter narrows results to documents covering the specified region.  ELDIS region ID's can only be used on the eldis and all graphs.  Whilst UN codes are supported on all graphs.
+            %tr
+              %td.details theme
+              %td Theme name, AGROVOC ID, ELDIS theme ID
+              %td eldis, r4d, all
+              %td.hardwrap This parameter narrows results to documents that are associated with the set of themes matching this query parameter.  Returned results are the union of matches across AGROVOC ID's, ELDIS ID's and theme names.
+
+            %tr
+              %td.details iati-identifier
+              %td IATI identifier
+              %td r4d, all
+              %td.hardwrap This parameter narrows results to R4D documents that are associated with the corresponding programme.  It is only supported on the <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %h5 Example Queries
+
+        %p Searching R4D documents where their titles or abstracts include the word "water" and returning a JSON response:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development.org/openapi/r4d/search/documents/full.json?q=water"
+
+        %p Requesting all documents from all graphs where their title or abstract includes the word "water" that cover Great Britain.  This demonstrates how criteria can be combined:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development.org/openapi/all/search/documents/full.xml?q=water&country=GB"
+
+        %p Requesting all documents from all graphs that cover Europe (Eldis ID C24):
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/all/search/documents/full.json?region=C24"
+
+        :markdown 
+          Requesting all R4D documents in JSON (20 at a time) that refer to the DFID "[Programme for Enhancement of Research Information](http://devtracker.dfid.gov.uk/projects/GB-1-114192/)" (Identified by IATI ID: GB-1-112059)
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/r4d/search/documents/full.json?iati-identifier=GB-1-112059&num_results=20"
+
+
+    %h3
+      2.2
+      %strong Themes
+      %h4
+        2.2.1
+        %strong get_all/themes
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %h5 Example Queries
+
+        %p Requesting the first page of all eldis themes at a full level of detail in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development.org/openapi/eldis/get_all/themes/full.json"
+
+        %p Requesting the first page of all r4d themes at a full level of detail in XML format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development.org/openapi/r4d/get_all/themes.xml"
+
+        %p Requesting the first page of all themes at a full level of detail in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl -H "Accept: application/json" "http://linked-development.org/openapi/eldis/get_all/themes/full?num_results=20&start_offset=20"
+
+      %h4
+        2.2.2
+        %strong get/themes
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %h5 Example Queries
+
+        %p Requesting an eldis theme by its id (C782) in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get/themes/C782/full.json"
+
+        %p Requesting an r4d theme by its id (knowledge_sharing) in XML format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/r4d/get/themes/knowledge_sharing/full.xml"
+
+        %p Requesting an r4d theme by its id (knowledge_sharing) from the all graph in XML format at a short level of detail:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/all/get/themes/knowledge_sharing/short.xml"
+
+      %h4
+        2.2.3
+        %strong count/themes
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Returns the counts of the number of documents associated with each theme.
+
+        %h5 Example Queries
+
+        %p Requesting counts of documents associated with all eldis themes in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/count/documents/theme.json"
+
+        %p Requesting counts of documents associated with all r4d themes in XML format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/r4d/count/documents/theme.xml"
+
+        %p Requesting counts of documents associated with all themes in JSON format, paginated into pages of 2 results at a time starting at offset 10.
+
+        %code.prettyprint.lang-bash
+          $ curl -H "Accept: application/json" "http://linked-development-api.dev/openapi/all/count/documents/theme?num_results=2&start_offset=10"
+
+    %h3
+      2.3
+      %strong Countries
+      %h4
+        2.3.1
+        %strong get_all/countries
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Returns all the countries from the specified graph.  NOTE that no attempt is made to reconcile country records across datasets/graphs, this means that the same country can be represented by a different record in r4d/eldis.
+
+        %h5 Example Queries
+
+        %p Requesting all countries at full detail 10 at a time from all graphs in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/all/get_all/countries/full.json"
+
+        %p Requesting all countries from eldis, at short detail, 20 at a time in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get_all/countries/short.json"
+
+      %h4
+        2.3.2
+        %strong get/countries
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Request data on a single country from the specified graph.
+
+        %h5 Example Queries
+
+        %p Requesting "Nauru" by its ELDIS country ID (A1151) at full detail in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get/countries/A1151.json"
+
+        %p Requesting "Nauru" by its ELDIS country ID (A1151) at full detail in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get/countries/A1151.json"
+
+      %h4
+        2.3.3
+        %strong count/countries
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Returns the counts of the number of documents associated with each theme.
+
+        %h5 Example Queries
+
+        %p Requesting counts of documents associated with all eldis themes in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/count/documents/country.json"
+
+        %p Requesting counts of documents associated with all r4d themes in XML format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/r4d/count/documents/country.xml"
+
+        %p Requesting counts of documents associated with all countries in JSON format, paginated into pages of 2 results at a time starting at offset 10.
+
+        %code.prettyprint.lang-bash
+          $ curl -H "Accept: application/json" "http://linked-development-api.dev/openapi/all/count/documents/country?num_results=2&start_offset=10"
+
+    %h3
+      2.4
+      %strong Regions
+      %h4
+        2.4.1
+        %strong get_all/regions
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Returns all the regions from the specified graph.  NOTE that no attempt is made to reconcile country records across datasets/graphs, this means that the same region can be represented by a different record in r4d/eldis.
+
+        %h5 Example Queries
+
+        %p Requesting all regions at full detail 10 at a time from all graphs in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/all/get_all/regions/full.json"
+
+        %p Requesting all regions from eldis, at short detail, 20 at a time in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get_all/regions/short.json"
+
+      %h4
+        2.4.2
+        %strong get/regions
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Request data on a single region from the specified graph.
+
+        %h5 Example Queries
+
+        %p Requesting "Nauru" by its ELDIS region ID (A1151) at full detail in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get/regions/A1151.json"
+
+        %p Requesting "Nauru" by its ELDIS region ID (A1151) at full detail in JSON:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/get/regions/A1151.json"
+
+      %h4
+        2.4.3
+        %strong count/regions
+
+        %p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+
+        %p Returns the counts of the number of documents associated with each theme.
+
+        %h5 Example Queries
+
+        %p Requesting counts of documents associated with all eldis themes in JSON format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/eldis/count/documents/region.json"
+
+        %p Requesting counts of documents associated with all r4d themes in XML format:
+
+        %code.prettyprint.lang-bash
+          $ curl "http://linked-development-api.dev/openapi/r4d/count/documents/region.xml"
+
+        %p Requesting counts of documents associated with all regions in JSON format, paginated into pages of 2 results at a time starting at offset 10.
+
+        %code.prettyprint.lang-bash
+          $ curl -H "Accept: application/json" "http://linked-development-api.dev/openapi/all/count/documents/region?num_results=2&start_offset=10"
+
+
+    %h3 2.5
+    
+    %strong Research Outputs
+
+    %p As R4D data splits the research outputs linked to a given IATI identifier into sub-projects, an additional call has been added called 'research_outputs' which shows a list of research outputs for an IATI ID, grouped by their associated project. 
+
+    %p <strong>count</strong> and <strong>search</strong> are not implemented for this object type.
+
+    %h4
+      2.5.1
+      %strong get_all/research_outputs
+
+      %table
+        %thead
+          %tr
+            %th Query Parameter
+            %th Supported Value Types
+            %th Description
+        %tbody
+          %tr
+            %td.details per_project
+            %td Integer
+            %td.hardwrap Specifies the maximum number of <strong>research_outputs</strong> to return for each <strong>research_project</strong>.  Defaults to 5.
+
+      %p Supported on the <strong>r4d</strong> and <strong>all</strong> graphs only.
+
+      %h5 Example Queries
+
+      %p Getting all research_projects with a maximum of 10 research_outputs per project, paginated into pages of 20 research_projects at a time.
+
+      %code.prettyprint.lang-bash
+        $ curl "http://linked-development-api.dev/openapi/r4d/get_all/research_outputs.json?per_project=10&num_results=20"
+
+    %h4
+      2.5.2
+      %strong get/research_outputs
+
+      %p Allows searching of research_projects by IATI identifier.  Unlike other <strong>get</strong> calls this can return multiple results. Consequently this means that the content of the response will contain a metadata section as with <strong>get_all</strong> and <strong>search</strong> requests.
+
+      %table
+        %thead
+          %tr
+            %th Query Parameter
+            %th Supported Value Types
+            %th Description
+        %tbody
+          %tr
+            %td.details per_project
+            %td Integer
+            %td.hardwrap Specifies the maximum number of <strong>research_outputs</strong> to return for each <strong>research_project</strong>.  Defaults to 5.
+
+      %p Supported on the <strong>r4d</strong> and <strong>all</strong> graphs only.
+
+      %p Getting research_projects associated with DFID "Professional Evidence and Applied Knowledge Services" funding stream, with a maximum of 10 research_outputs per project, paginated into pages of 20 research_projects at a time.
+
+      %code.prettyprint.lang-bash
+        $ curl "http://linked-development-api.dev/openapi/r4d/get/research_outputs/GB-1-114192.json?per_project=10&num_results=20"        
+
+:javascript
+  prettyPrint();
