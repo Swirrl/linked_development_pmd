@@ -1,15 +1,13 @@
 - highlight_in_menu "documentation"
-- set_page_title "Developer documentation"
+- set_page_title "Linked Development Documentation"
 - bodyclass 'docs'
 
 %header
   =fullwidth do
-    = page_title("Developer documentation")
+    = page_title("Linked Development Documentation")
 
 %section
   =fullwidth do
-
-
     %section
       %h2 Linked Development API
 
@@ -46,23 +44,23 @@
       %ul
         %li
           %a(href="#documents")
-            3.1
+            2.1
             %strong Documents
         %li
           %a(href="#themes")
-            3.2
+            2.2
             %strong Themes
         %li
           %a(href="#countries")
-            3.2
+            2.2
             %strong Countries
         %li
           %a(href="#regions")
-            3.2
+            2.2
             %strong Regions
         %li
           %a(href="#research-outputs")
-            3.2
+            2.2
             %strong Research Outputs
 
       %h3
@@ -71,11 +69,11 @@
 
       %ul
         %li
-          %a(href="#accessing-the-api")
+          %a(href="#errors")
             3.1
             %strong HTTP Error Codes
         %li
-          %a(href="#api-url-patterns")
+          %a(href="#error-responses")
             3.2
             %strong Response Messages
 
@@ -574,6 +572,62 @@
 
             %code.prettyprint.lang-bash
               $ curl "http://linked-development-api.dev/openapi/r4d/get/research_outputs/GB-1-114192.json?per_project=10&num_results=20"        
+
+    %section
+      %h2 3 - Errors
+      .subsection#errors
+        %h3
+          3.1
+          %strong HTTP Error Codes
+
+          %table
+            %thead
+              %tr
+                %th Error type
+                %th HTTP status code
+                %th Notes
+            %tbody
+              %tr
+                %td Response too large
+                %td 400
+                %td We will include a text message in the response body including the phrase "Response too large."
+              %tr
+                %td SPARQL Syntax Error
+                %td 400
+                %td We will include a text message in the response body with details of the error.
+              %tr
+                %td Resource Not Found
+                %td 404
+                %td Returned if you request a resource or URL that doesn't exist
+              %tr
+                %td Not Acceptable
+                %td 406
+                %td Returned if you request a non-supported data format
+              %tr
+                %td Unexpected Errors
+                %td 500
+                %td
+              %tr
+                %td Query Timeouts
+                %td 503
+                %td The timeout for requesting data from our database will initially be set to 10 seconds.
+          %br
+
+
+      .subsection#error-responses
+        %h3
+          3.2
+          %strong Response Messages
+
+          %p In addition to a HTTP response code, in the case of an error the response will contain a document containing a description of the error encountered.
+
+          %p For example if a JSON object is requested a JSON object will be returned who's error key will contain a description of the error.
+
+          %code.prettyprint.lang-javascript
+            :markdown
+              {
+                error: "Graph test is not supported for this object type. Valid graphs are: all, eldis, r4d."
+              }
 
     :javascript
       prettyPrint();
