@@ -2,17 +2,22 @@ module ApplicationHelper
 
   def cabi_menu_documentation
     overrides = {
-       :target => main_app.linked_development_api_docs_path,
+       :target => main_app.linked_development_overview_docs_path,
        :title => "Linked Development",
-       :highlight => "linkeddocumentation",
+       :highlight => "doc_overview",
        :items => [
-        {
-           title: "Linked Data API",
-           target: publish_my_data.api_docs_path,
-           highlight: "documentation"
-           }]
-       }
-       
-       standard_menu_docs.merge overrides
+                  {
+                   title: "Linked Development API",
+                   target: main_app.linked_development_api_docs_path,
+                   highlight: "linked_dev_docs"
+                  },
+                  {
+                   title: "Linked Data API",
+                   target: publish_my_data.api_docs_path,
+                   highlight: "documentation"
+                  }]
+    }
+
+    standard_menu_docs.merge overrides
    end
 end
