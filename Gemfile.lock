@@ -1,4 +1,20 @@
 GIT
+  remote: git@github.com:Swirrl/publish_my_data_enterprise.git
+  revision: f80437a299aa31befc6b3acbf803c68f8543eb0d
+  branch: no_views
+  specs:
+    publish_my_data_enterprise (0.0.2)
+      compass-rails
+      devise (~> 3.0.0)
+      dynamic_form
+      entypo-rails
+      haml-rails
+      mongoid (~> 3.1.0)
+      rails (~> 3.2.11)
+      rails_autolink
+      sass-rails
+
+GIT
   remote: https://github.com/getsentry/raven-ruby.git
   revision: ead49c8d8a6ff99260827f9267bd3bda33a5993e
   branch: ead49c
@@ -46,6 +62,9 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     backports (3.6.0)
+    bcrypt (3.1.7)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     builder (3.0.4)
     capistrano (2.15.5)
       highline
@@ -53,6 +72,7 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    chunky_png (1.3.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -60,16 +80,31 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.1.3)
+      compass (>= 0.12.2)
     dalli (2.7.0)
+    devise (3.0.4)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
+    dynamic_form (1.1.4)
     ebnf (0.3.5)
       rdf
       sxp
+    entypo-rails (2.2.1)
+      railties (>= 3.1, <= 5)
     equivalent-xml (0.4.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    fssm (0.2.10)
     guid (0.1.1)
     haml (4.0.5)
       tilt
@@ -100,6 +135,12 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     mini_portile (0.5.2)
+    mongoid (3.1.6)
+      activemodel (~> 3.2)
+      moped (~> 1.4)
+      origin (~> 1.0)
+      tzinfo (~> 0.3.29)
+    moped (1.5.2)
     multi_json (1.8.4)
     multipart-post (2.0.0)
     net-scp (1.1.2)
@@ -111,6 +152,8 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    origin (1.1.0)
+    orm_adapter (0.5.0)
     polyglot (0.3.4)
     publish_my_data (1.3.0)
       aws-sdk
@@ -201,6 +244,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     uuidtools (2.1.4)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -210,6 +255,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   publish_my_data
+  publish_my_data_enterprise!
   rails (= 3.2.15)
   rvm-capistrano
   sass-rails (~> 3.2.3)

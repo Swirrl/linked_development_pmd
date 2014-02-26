@@ -1,0 +1,18 @@
+production:
+ sessions:
+   default:
+     database: linked_development_production
+     hosts:
+       - localhost:27017
+     options:
+       consistency: :strong
+       safe: true
+development:
+ sessions:
+   default:
+     database: linked_development_development
+     hosts:
+       - localhost:27017
+     options:
+       consistency: :strong
+       safe: true
