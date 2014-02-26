@@ -7,11 +7,11 @@
 -# -------------------------------------------------------------------
 
 - content_for :docs_intro do
-  %h1 Linked Development Documentation
-  :markdown
-    The Linked Development API is a [clone of the IDS API](http://api.ids.ac.uk/docs/).
+	%h1 Linked Development Documentation
+	:markdown
+		The Linked Development API is a [clone of the IDS API](http://api.ids.ac.uk/docs/).
 
-    This API is designed to be accessible to applications written for the IDS API.  With minimal modifications they will be able to access the large collection of documents and meta data resources which we store.
+		This API is designed to be accessible to applications written for the IDS API.  With minimal modifications they will be able to access the large collection of documents and meta data resources which we store.
 
 -# -------------------------------------------------------------------
 -#  MAIN CONTENT
@@ -22,65 +22,144 @@
 -# -------------------------------------------------------------------
 
 = documentation_section "Linked Development API" do
-  = documentation_subsection "Accessing the API" do
-    %p The API has been designed to allow applications written for the IDS API to be simply modified to talk to a large collection of documents and resources drawn from across the datasets including in Linked Development.  The API supports both JSON and XML response types across all of our endpoints.
-  = documentation_subsection "API URL Patterns" do
-    %p We follow the IDS API's URL pattern for modelling our request methods, typically this means that API methods follow the following structure:
-    = codeblock "uri" do
-      \/openapi/{graph}/{function}/{object}/{identifier_or_type}/[detail][format]?{option_parameters}
-    %table
-      %thead
-        %tr
-          %th Parameter
-          %th Acceptable Values
-          %th Description
-      %tbody
-        %tr
-          %td.details graph
-          %td all, eldis, r4d
-          %td.hardwrap The graph parameter indicates the scope of your query.  There are two main graphs, <strong>r4d</strong> and <strong>eldis</strong> and a union <strong>all</strong> graph for queries that wish to search across both platforms.  The graphs are equivalent to the two primary datasets we hold in our Linked Data store.
-        %tr
-          %td.details function
-          %td get, get_all, search, count
-          %td.hardwrap The function represents the type of query you are performing.  For example a <strong>get</strong> will typically return one result by its id, whilst a <strong>get_all</strong> or a <strong>search</strong> will tend to return many results in a paginated form.  Calls to <strong>count</strong> will return the number of distinct objects that are found to match your query.
-        %tr
-          %td.details object
-          %td themes, documents, regions, countries, research_outputs
-          %td.hardwrap The function represents the type of query you are performing.  For example a <strong>get</strong> will typically return one result by its id, whilst a <strong>get_all</strong> or a <strong>search</strong> will tend to return many results in a paginated form.
-        %tr
-          %td.details identifier_or_type
-          %td N/A
-          %td.hardwrap Typically this parameter is used to refer to a specific object by an identifier for example during a  <strong>get</strong> request.  Sometimes its use is overloaded depending on the function, for example <strong>count</strong> queries use it to specify the object types you are counting.
-        %tr
-          %td.details detail
-          %td short, full 
-          %td.hardwrap This is an optional parameter that is supported on all routes.  It allows the requestor to specify how much detail comes back with each request.  If this parameter is not supplied it will default to <strong>short</strong>.  Choosing a <strong>full</strong> level of detail will return a more complicated document back consisting of much more information than in the <strong>short</strong> view.
-        %tr
-          %td.details format
-          %td .json, .xml
-          %td.hardwrap Requests against the API <strong>must</strong> specify a format.  This can be done either by providing the appropriate mime-type as an <strong>Accept</strong> header on the HTTP request, or by appending either .json or .xml to the requests URL string.
-        %tr
-          %td.details option_parameters
-          %td num_results, start_offset ...
-          %td.hardwrap Query string parameters can be provided with some requests to further refine them, however all requests returning many results support pagination via the parameters num_results and start_offset.  For details on specific parameters please refer to the documentation for each object/function.
+	= documentation_subsection "Accessing the API" do
+		%p The API has been designed to allow applications written for the IDS API to be simply modified to talk to a large collection of documents and resources drawn from across the datasets including in Linked Development.  The API supports both JSON and XML response types across all of our endpoints.
+	= documentation_subsection "API URL Patterns" do
+		%p We follow the IDS API's URL pattern for modelling our request methods, typically this means that API methods follow the following structure:
+		= codeblock "uri" do
+			\/openapi/{graph}/{function}/{object}/{identifier_or_type}/[detail][format]?{option_parameters}
+		%table
+			%thead
+				%tr
+					%th Parameter
+					%th Acceptable Values
+					%th Description
+			%tbody
+				%tr
+					%td.details graph
+					%td all, eldis, r4d
+					%td.hardwrap The graph parameter indicates the scope of your query.  There are two main graphs, <strong>r4d</strong> and <strong>eldis</strong> and a union <strong>all</strong> graph for queries that wish to search across both platforms.  The graphs are equivalent to the two primary datasets we hold in our Linked Data store.
+				%tr
+					%td.details function
+					%td get, get_all, search, count
+					%td.hardwrap The function represents the type of query you are performing.  For example a <strong>get</strong> will typically return one result by its id, whilst a <strong>get_all</strong> or a <strong>search</strong> will tend to return many results in a paginated form.  Calls to <strong>count</strong> will return the number of distinct objects that are found to match your query.
+				%tr
+					%td.details object
+					%td themes, documents, regions, countries, research_outputs
+					%td.hardwrap The function represents the type of query you are performing.  For example a <strong>get</strong> will typically return one result by its id, whilst a <strong>get_all</strong> or a <strong>search</strong> will tend to return many results in a paginated form.
+				%tr
+					%td.details identifier_or_type
+					%td N/A
+					%td.hardwrap Typically this parameter is used to refer to a specific object by an identifier for example during a  <strong>get</strong> request.  Sometimes its use is overloaded depending on the function, for example <strong>count</strong> queries use it to specify the object types you are counting.
+				%tr
+					%td.details detail
+					%td short, full 
+					%td.hardwrap This is an optional parameter that is supported on all routes.  It allows the requestor to specify how much detail comes back with each request.  If this parameter is not supplied it will default to <strong>short</strong>.  Choosing a <strong>full</strong> level of detail will return a more complicated document back consisting of much more information than in the <strong>short</strong> view.
+				%tr
+					%td.details format
+					%td .json, .xml
+					%td.hardwrap Requests against the API <strong>must</strong> specify a format.  This can be done either by providing the appropriate mime-type as an <strong>Accept</strong> header on the HTTP request, or by appending either .json or .xml to the requests URL string.
+				%tr
+					%td.details option_parameters
+					%td num_results, start_offset ...
+					%td.hardwrap Query string parameters can be provided with some requests to further refine them, however all requests returning many results support pagination via the parameters num_results and start_offset.  For details on specific parameters please refer to the documentation for each object/function.
+		%p
+			%strong NOTE: Not all possible combinations of parameters are supported.
+
+	= documentation_subsection "Multiple Results Metadata" do
+		%p All of the routes within the API that return multiple results, such as <strong>get_all</strong>, <strong>search</strong> and <strong>count</strong> return a metadata object which can be used to assist in paginating the results.
+		%p This can be found under a "metadata" key at the top level of the response document.  The metadata object in turn can contain up to four keys:
+		%table
+			%thead
+				%tr
+					%th Key
+					%th Value Type
+					%th Always Present
+					%th Description
+			%tbody
+				%tr
+					%td.details num_results
+					%td Integer
+					%td Y
+					%td.hardwrap This value states the total number of results that have been matched.  Responses typically only contain a paginated subset of all the results.
+				%tr
+					%td.details start_offset
+					%td Integer
+					%td Y
+					%td.hardwrap This value states the currently requested offset.  The offset represents the point at which the current pagination window starts amongst the total ordering of results.  
+				%tr
+					%td.details next_page
+					%td URL
+					%td N
+					%td.hardwrap Following this link will retrieve the next page of results.  Users should test for the presence of the <strong>next_page</strong> key before accessing the value.  If the key is not present the current page represents the final page of results.
+				%tr
+					%td.details prev_page
+					%td URL
+					%td N
+					%td.hardwrap Following this link will retrieve the previous page of results.  Users should test for the presence of the <strong>prev_page</strong> key before accessing the value.  If the key is not present the current page represents the first page of results.
+
+= documentation_section "Supported Requests" do
+	= documentation_subsection "Documents" do
+		= documentation_subsubsection "get_all/documents" do
+			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+			%p 
+				%strong
+					Example:
+				Requesting the first page of all eldis documents at a full level of detail in JSON format:
+			= codeblock "bash" do
+				$ curl "http://linked-development.org/openapi/eldis/get_all/documents/full.json"
+			%p
+				%strong
+					Example:
+				Requesting the first page of all r4d documents at a full level of detail in XML format:
+			= codeblock "bash" do
+				$ curl "http://linked-development.org/openapi/r4d/get_all/documents.xml"
+			%p
+				%strong
+					Example:
+				Requesting the first page of all documents at a full level of detail in JSON format:
+			= codeblock "bash" do
+				$ curl -H "Accept: application/json" "http://linked-development.org/openapi/eldis/get_all/documents/full?num_results=20&start_offset=20"
+		= documentation_subsubsection "get/documents" do
+			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+			%p 
+				%strong
+					Example:
+				Requesting an eldis document by its id (A64559) in JSON format:
+			= codeblock "bash" do
+				$ curl "http://linked-development-api.dev/openapi/eldis/get/documents/A64559/full.json"
+			%p 
+				%strong
+					Example:
+				Requesting an r4d document by its id (185225) in XML format:
+			= codeblock "bash" do
+				$ curl "http://linked-development-api.dev/openapi/r4d/get/documents/185225/full.xml"
+			%p 
+				%strong
+					Example:
+				Requesting an r4d document by its id (185225) from the all graph in XML format at a short level of detail:
+			= codeblock "bash" do
+				$ curl "http://linked-development.org/openapi/all/get/documents/185225/short.xml"
 
 
-              
+
+
+
 -# -------------------------------------------------------------------
--#  CONTENTS NAVIGATION copy and paste from PMD. TODO: partialise
+-#  CONTENTS NAVIGATION nb - unlike pmd, include subsubs 
+-#  (TODO: partialise this in PMD for easier re-use)
 -# -------------------------------------------------------------------
 
 - content_for :docs_contents do
-  %nav.contents
-    %h2 Contents
-    - @documentation_sections.each do |section|
-      %h3= section[:name]
-      %ul
-      - section[:subsections].each do |subsection|
-        %li= docs_inline_link subsection[:name], subsection[:name]
-        / 
-          - # don't include subsubsections in nav
-          - if (subsection[:subsubsections].length > 0)
-            %ul
-            - subsection[:subsubsections].each do |subsubsection|
-              %li= docs_inline_link subsubsection[:name], subsubsection[:name]
+	%nav.contents
+		%h2 Contents
+		- @documentation_sections.each do |section|
+			%h3= section[:name]
+			%ul
+			- section[:subsections].each do |subsection|
+				%li
+					= docs_inline_link subsection[:name], subsection[:name]
+					- if (subsection[:subsubsections].length > 0)
+						%ul{style:"margin-left:24px;"}
+							- subsection[:subsubsections].each do |subsubsection|
+								%li= docs_inline_link subsubsection[:name], subsubsection[:name]
