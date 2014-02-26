@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:Swirrl/publish_my_data_enterprise.git
-  revision: f80437a299aa31befc6b3acbf803c68f8543eb0d
+  revision: a03e01b59f02e2e3ad5e6eed85cb571112d87149
   branch: no_views
   specs:
     publish_my_data_enterprise (0.0.2)
