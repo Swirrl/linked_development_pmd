@@ -1,7 +1,7 @@
-- content_for :head do	
-	= render 'shared/head'
-
-- content_for :global_header do
-	= render 'shared/nav'
-
-= render template: 'layouts/publish_my_data/pmd_layout'
+!!! 5
+%html{class:@htmlclass}
+        %head
+                = render 'shared/head'
+        %body
+                = render 'shared/nav'
+                = content_for?(:publish_my_data_content) ? yield(:publish_my_data_content) : yield
