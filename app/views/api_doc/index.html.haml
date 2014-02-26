@@ -140,9 +140,68 @@
 				Requesting an r4d document by its id (185225) from the all graph in XML format at a short level of detail:
 			= codeblock "bash" do
 				$ curl "http://linked-development.org/openapi/all/get/documents/185225/short.xml"
-
-
-
+		= documentation_subsubsection "Counting Documents" do
+			%p Counts are always of documents but by another object criteria, and are therefore not supported on the document routes directly.  Please consult the other object types for how to count documents.
+		= documentation_subsubsection "Searching for Documents" do
+			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
+			%p Searches for documents which are part of themes that match the supplied criteria.  Criteria can be combined through conjunction (boolean AND) to narrow results further.
+			%table
+				%thead
+					%tr
+						%th Query Parameter
+						%th Supported Value Types
+						%th Supported Graphs
+						%th Description
+				%tbody
+					%tr
+						%td.details q
+						%td Text String
+						%td eldis, r4d, all
+						%td.hardwrap This parameter does a free text query across document titles and abstracts.
+					%tr
+						%td.details country
+						%td ISO2 Country Code, ELDIS Country ID
+						%td eldis, r4d, all
+						%td.hardwrap This parameter narrows results to documents covering the specified country.  ELDIS country ID's can only be used on the eldis and all graphs.  Whilst ISO2 country codes are supported on all graphs.
+					%tr
+						%td.details region
+						%td UN Code, ELDIS region ID
+						%td eldis, r4d, all              
+						%td.hardwrap This parameter narrows results to documents covering the specified region.  ELDIS region ID's can only be used on the eldis and all graphs.  Whilst UN codes are supported on all graphs.
+					%tr
+						%td.details theme
+						%td Theme name, AGROVOC ID, ELDIS theme ID
+						%td eldis, r4d, all
+						%td.hardwrap This parameter narrows results to documents that are associated with the set of themes matching this query parameter.  Returned results are the union of matches across AGROVOC ID's, ELDIS ID's and theme names.
+					%tr
+						%td.details iati-identifier
+						%td IATI identifier
+						%td r4d, all
+						%td.hardwrap This parameter narrows results to R4D documents that are associated with the corresponding programme.  It is only supported on the <strong>r4d</strong> and <strong>all</strong> graphs.
+			%p 
+				%strong
+					Example:
+				Searching R4D documents where their titles or abstracts include the word "water" and returning a JSON response:
+			= codeblock "bash" do
+				$ curl "http://linked-development.org/openapi/r4d/search/documents/full.json?q=water"
+			%p 
+				%strong
+					Example:
+				Requesting all documents from all graphs where their title or abstract includes the word "water" that cover Great Britain.  This demonstrates how criteria can be combined:
+			= codeblock "bash" do
+				$ curl "http://linked-development.org/openapi/all/search/documents/full.xml?q=water&country=GB"
+			%p 
+				%strong
+					Example:
+				Requesting all documents from all graphs that cover Europe (Eldis ID C24):
+			= codeblock "bash" do
+				$ curl "http://linked-development-api.dev/openapi/all/search/documents/full.json?region=C24"
+			%p 
+				%strong
+					Example:
+				Requesting all R4D documents in JSON (20 at a time) that refer to the DFID <a href="http://devtracker.dfid.gov.uk/projects/GB-1-114192/">Programme for Enhancement of Research Information</a> (Identified by IATI ID: GB-1-112059)
+			= codeblock "bash" do
+				$ curl "http://linked-development-api.dev/openapi/r4d/search/documents/full.json?iati-identifier=GB-1-112059&num_results=20"
 
 
 -# -------------------------------------------------------------------
