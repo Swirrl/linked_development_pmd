@@ -66,12 +66,14 @@ LinkedDevelopmentPmd::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.assets.precompile += %w(modernizr.js publish_my_data.js) # <-- required for production  
+  config.assets.precompile += %w(modernizr.js publish_my_data.js) # <-- required for production
 end
 
 PublishMyData.configure do |config|
   config.sparql_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/sparql'
   config.local_domain = 'linked-development.org'
+  config.application_name = "Linked Development"
+
   config.tripod_cache_store =  Tripod::CacheStores::MemcachedCacheStore.new('localhost:11215')
   config.sparql_timeout_seconds = 35
 end
