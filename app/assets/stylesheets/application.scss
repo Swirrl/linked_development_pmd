@@ -1,1 +1,5 @@
 @import "publish_my_data.scss";
+
+nav.pmd_nav_sub .pmd_row .pmd_box_quarter + .pmd_box_quarter + .pmd_box_quarter + .pmd_box_quarter {
+  display: none;
+}
