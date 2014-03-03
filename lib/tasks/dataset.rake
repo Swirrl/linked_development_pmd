@@ -20,7 +20,7 @@ namespace :dataset do
     ds.data_graph_uri = data_graph
 
     #ds.data_dump = "http://#{PublishMyData.local_domain}/dumps/#{DataDump.latest.basename}"
-    ds.data_dump = "#{uri}/dump"
+    ds.data_dump = uri
     ds.write_predicate("http://rdfs.org/ns/void#sparqlEndpoint", "http://#{PublishMyData.local_domain}/sparql")
     #ds.write_predicate(RDF::Vocabulary::DCTERMS.references, "http://#{PublishMyData.local_domain}/docs")
     ds.save!
