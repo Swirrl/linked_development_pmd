@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 LinkedDevelopmentPmd::Application.routes.draw do
 
   get '/', to: redirect('/data'), as: :home # use the data catalogue
@@ -7,5 +8,6 @@ LinkedDevelopmentPmd::Application.routes.draw do
     get '/docs', to: 'api_doc#index', as: :linked_development_api_docs
   end
 
+  mount PublishMyDataEnterprise::Engine, at: "/" , as: 'publish_my_data_enterprise'
   mount PublishMyData::Engine, at: "/"
 end
