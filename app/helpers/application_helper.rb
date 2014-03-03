@@ -3,7 +3,7 @@ module ApplicationHelper
   def cabi_menu_documentation
     overrides = {
        :target => main_app.linked_development_overview_docs_path,
-       :title => "Linked Development",
+       :title => "Documentation",
        :highlight => "doc_overview",
        :items => [
                   {
