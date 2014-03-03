@@ -1,6 +1,8 @@
 #!/bin/bash
 
-DATESTR=$(date +"%Y%m%d%H%M%S")
+CURRENT_TIME=$(date +"@%s")
+DATESTR=$(date --date="$CURRENT_TIME" +"%Y-%m-%dT%H:%M:%SZ")
+DATE_FNAME=$(date --date="$CURRENT_TIME" +"%Y%m%d%H%M%S")
 LOCAL_BACKUP_DIR=/home/cabi-crawler/backups
 
 BASE_ENDPOINT=http://sparql3.publishmydata.com/linkeddev
@@ -77,8 +79,8 @@ function remove_old_backups() {
     find $LOCAL_BACKUP_DIR -mtime +14 -exec bash -c 'remove_backup "$0"' {} \;
 }
 
-ELDIS_DATA="eldis_data_$DATESTR.nt"
-R4D_DATA="r4d_data_$DATESTR.nt"
+ELDIS_DATA="dataset_data_eldis_$DATE_FNAME.nt"
+R4D_DATA="dataset_data_r4d_$DATE_FNAME.nt"
 
 fetch_ntriples $ELDIS_DATA  "http%3A%2F%2Flinked-development.org%2Fgraph%2Feldis"
 fetch_ntriples $R4D_DATA "http%3A%2F%2Flinked-development.org%2Fgraph%2Fr4d"
