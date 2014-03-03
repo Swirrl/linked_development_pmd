@@ -81,3 +81,9 @@ end
 Tripod.configure do |config|
   config.update_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/update'
 end
+
+PublishMyDataEnterprise.configure do |c|
+  c.aws_access_key_id = 'AKIAIR7BREBM76EWA2WQ'
+  c.aws_secret_access_key = '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'
+  c.downloads_s3_bucket = 'linkeddev-dumps'
+end
