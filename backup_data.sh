@@ -50,7 +50,7 @@ function set_modified_date() {
                                 ?ds a <http://publishmydata.com/def/dataset#Dataset> .
                                 OPTIONAL { ?ds <http://purl.org/dc/terms/modified> ?mod }
                             }
-                        }' $GRAPH_SLUG $GRAPH_SLUG $DATESTR`
+                        }' $GRAPH_SLUG $DATESTR $GRAPH_SLUG `
 
     curl -s -f -d "request=$query" $UPDATE_ENDPOINT > /dev/null
     CURL_STATUS=$?
