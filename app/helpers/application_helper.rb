@@ -20,4 +20,8 @@ module ApplicationHelper
 
     standard_menu_docs.merge overrides
    end
+
+  def data_is_updating?
+    LinkedDevelopmentPmd::RedirectWhenCrawling.update_in_progress?
+  end
 end

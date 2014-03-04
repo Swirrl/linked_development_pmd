@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 LinkedDevelopmentPmd::Application.routes.draw do
 
   get '/', to: redirect('/data'), as: :home # use the data catalogue

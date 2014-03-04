@@ -3,5 +3,9 @@
 	%head
 		= render 'shared/head'
 	%body
+		- if data_is_updating?
+			%aside.pmd_warning
+				= fullwidth do
+					<p><i class="icon-info"></i> <strong>The data</strong> is being updated and API Access is currently offline.  The service will resume as normal in a few minutes.</p>
 		= render 'shared/nav'
 		= content_for?(:publish_my_data_content) ? yield(:publish_my_data_content) : yield
