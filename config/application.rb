@@ -8,7 +8,7 @@ require "active_resource/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
-require './lib/linked_development_pmd/redirect_when_crawling'
+require './lib/linked_development_pmd/temporarily_unavailable_when_crawling'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line

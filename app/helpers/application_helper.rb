@@ -22,6 +22,6 @@ module ApplicationHelper
    end
 
   def data_is_updating?
-    LinkedDevelopmentPmd::RedirectWhenCrawling.update_in_progress?
+    LinkedDevelopmentPmd::TemporarilyUnavailableWhenCrawling.update_in_progress?
   end
 end
