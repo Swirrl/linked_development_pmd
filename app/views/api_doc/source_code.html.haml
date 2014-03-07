@@ -1,0 +1,50 @@
+- highlight_in_menu "doc_source_code"
+- set_page_title "Documentation - Overview"
+- set_pmd_page_class 'doc_overview'
+
+%header
+  = fullwidth do
+    = page_title("Source Code")
+    %p
+      All of the source code powering this site is available online under Open Source licenses.  We make use of the following code.  Please consult each project for information on licensing.
+
+%section
+  = fullwidth do
+    = section_title("Publish My Data")
+    %p
+      :markdown
+        This site is built on the Open Source [Publish My Data Platform](http://swirrl.com/publishmydata) and all of the code powering this site is available as Open Source.
+
+      = link_to "Source Code", "https://github.com/Swirrl/publish_my_data"
+
+  = fullwidth do
+    = section_title("Linked Development API")
+    %p
+      :markdown
+        This is our clone of the IDS API.
+
+      = link_to "Source Code", "https://github.com/Swirrl/linked_development_api"
+
+  = fullwidth do
+    = section_title("Linked Development Crawler")
+    %p
+      :markdown
+        This is the crawler for retrieving data from ELDIS and R4D.
+
+      = link_to "Source Code", "https://github.com/Swirrl/linked_development_crawler"
+
+  = fullwidth do
+    = section_title("This website")
+    %p
+      :markdown
+        This website is built on top of publish my data, these customisations are available as Open Source.
+
+      = link_to "Source Code", "https://github.com/Swirrl/linked_development_pmd"
+
+  = fullwidth do
+    = section_title("Jena Fuseki")
+    %p
+      :markdown
+        We currently store all of our linked data in the Apache Jena Fuseki triple store.
+
+      = link_to "Source Code", "http://jena.apache.org/"

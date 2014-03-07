@@ -8,4 +8,8 @@ class ApiDocController < ApplicationController
 
   def overview
   end
+
+  def source_code
+  end
+
 end

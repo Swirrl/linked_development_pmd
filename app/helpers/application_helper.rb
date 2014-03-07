@@ -19,7 +19,19 @@ module ApplicationHelper
     }
 
     standard_menu_docs.merge overrides
+  end
+
+  def cabi_menu_source_code
+    overrides = {
+       :target => main_app.linked_development_source_code_path,
+       :title => "Source Code",
+       :highlight => "doc_source_code",
+       :items => []
+    }
+
+    standard_menu_docs.merge overrides
    end
+
 
   def data_is_updating?
     LinkedDevelopmentPmd::TemporarilyUnavailableWhenCrawling.update_in_progress?
