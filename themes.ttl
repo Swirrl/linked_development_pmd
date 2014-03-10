@@ -1,0 +1,16 @@
+<http://linked-development.org/def/concept/themes/international-development>
+        a       <http://linked-development.org/def/Theme> , <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "This theme provides data on international development." ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "International Development" ;
+        <http://www.w3.org/2004/02/skos/core#definition>
+                "A theme covering data on International Development." ;
+        <http://www.w3.org/2004/02/skos/core#inScheme>
+                <http://linked-development.org/def/concept-scheme/themes> ;
+        <http://www.w3.org/2004/02/skos/core#notation>
+                "international-development" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "International Development" ;
+        <http://www.w3.org/2004/02/skos/core#topConceptOf>
+                <http://linked-development.org/def/concept-scheme/themes> .

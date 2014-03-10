@@ -79,6 +79,7 @@ PublishMyData.configure do |config|
 end
 
 Tripod.configure do |config|
+  config.data_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/data'
   config.update_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/update'
 end
 

@@ -42,6 +42,8 @@ end
 
 Tripod.configure do |config|
   config.update_endpoint = 'http://127.0.0.1:3030/linkeddev-dev/update'
+  config.data_endpoint = 'http://127.0.0.1:3030/linkeddev-dev/data'
+
   # e.g memcached -m 1024 -p 11214 -I 5M -u memcache -l 127.0.0.1
   config.cache_store  = Tripod::CacheStores::MemcachedCacheStore.new('localhost:11211')
 end
