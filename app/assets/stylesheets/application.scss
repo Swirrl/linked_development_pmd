@@ -1,6 +1,17 @@
-$pmdconfig_typeface_bodycopy: "helvetica neue",helvetica,arial,sans-serif;
-$pmdconfig_colour_link: #f3772e;
-$pmdconfig_colour_link_hover: #e83808;
+$pmdconfig_colour_page_datasets:                                   #285171;
+$pmdconfig_colour_page_dataset:                                    #81bf4d;
+$pmdconfig_colour_page_resource:                                   #f3772e;
+$pmdconfig_colour_page_ontology:                                   #79f1e7;
+$pmdconfig_colour_page_concept:                                    #79f1e7;
+$pmdconfig_colour_page_type:                                       #3972a2;
+$pmdconfig_colour_page_theme:                                      #54b6f0;
+$pmdconfig_colour_body_text:                                       #374651;
+$pmdconfig_colour_link:                                            #d46728;
+$pmdconfig_colour_link_hover:                                      #f3772e;
+$pmdconfig_colour_link:                                            #f3772e;
+$pmdconfig_colour_link_hover:                                      #e83808;
+
+$pmdconfig_typeface_bodycopy: "Roboto Slab","Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
 
 .linkeddev-logo {
 	margin-top: 12px;
