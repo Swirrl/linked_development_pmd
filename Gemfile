@@ -8,6 +8,8 @@ gem 'publish_my_data_enterprise', :git => "git@github.com:Swirrl/publish_my_data
 
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git", :branch => 'ead49c'
 
+gem 'sass', '=3.2.14' #Temporarily lock to avoid "LoadError: cannot load such file -- sass/script/node"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
