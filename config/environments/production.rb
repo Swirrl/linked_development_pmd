@@ -70,7 +70,7 @@ LinkedDevelopmentPmd::Application.configure do
 end
 
 PublishMyData.configure do |config|
-  config.sparql_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/sparql'
+  config.sparql_endpoint = 'http://46.4.78.148/linkeddev/sparql'
   config.local_domain = 'linked-development.org'
   config.application_name = "Linked Development"
 
@@ -79,8 +79,8 @@ PublishMyData.configure do |config|
 end
 
 Tripod.configure do |config|
-  config.data_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/data'
-  config.update_endpoint = 'http://sparql.linkeddev.swirrl.com/linkeddev/update'
+  config.data_endpoint = 'http://46.4.78.148/linkeddev/data'
+  config.update_endpoint = 'http://46.4.78.148/linkeddev/update'
 end
 
 PublishMyDataEnterprise.configure do |c|

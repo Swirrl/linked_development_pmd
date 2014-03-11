@@ -29,7 +29,7 @@ source backup-helpers.sh
 
 LOCAL_BACKUP_DIR=/home/cabi-crawler/backups
 S3_BUCKET=s3://linkeddev-dumps
-BASE_ENDPOINT=http://sparql3.publishmydata.com/linkeddev
+BASE_ENDPOINT=http://46.4.78.148/linkeddev
 DATA_ENDPOINT=$BASE_ENDPOINT/data
 UPDATE_ENDPOINT=$BASE_ENDPOINT/update
 
