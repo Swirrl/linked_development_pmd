@@ -12,4 +12,10 @@ class ApiDocController < ApplicationController
   def source_code
   end
 
+  def privacy_policy
+  end
+
+  def accessibility_policy
+  end
+
 end
