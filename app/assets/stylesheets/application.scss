@@ -21,3 +21,10 @@ $pmdconfig_typeface_bodycopy: "Roboto Slab","Calisto MT", "Bookman Old Style", B
 }
 
 @import "publish_my_data.scss";
+
+.cabi_sample_data {
+		th, td {
+			width: 33%;
+			vertical-align:top;
+		}
+}

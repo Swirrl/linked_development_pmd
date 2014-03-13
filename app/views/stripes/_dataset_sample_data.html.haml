@@ -6,12 +6,12 @@
 						= pluralize dataset.types.length, 'type'
 						of resource:
 
-				%table
+				%table.cabi_sample_data
 						%thead
 								%tr
-										%td type
-										%td sample data
-										%td
+										%th type
+										%th sample data
+										%th
 
 						- ExampleType.find_types(@resource).each do |type|
 								- sample = type.first_example
