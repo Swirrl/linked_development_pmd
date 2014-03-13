@@ -1,0 +1,25 @@
+%section
+		= fullwidth do
+				= section_title("Sample data")
+				%p
+						This dataset contains
+						= pluralize dataset.types.length, 'type'
+						of resource:
+
+				%table
+						%thead
+								%tr
+										%td type
+										%td sample data
+										%td
+
+						- ExampleType.find_types(@resource).each do |type|
+								- sample = type.first_example
+								- if sample.present?
+										%tr
+												%td
+														= type.type_slug
+												%td
+														= link_to sample.label, publish_my_data.show_resource_path(uri:sample.uri)
+												%td
+														= link_to(many_samples_label(type), publish_my_data.list_resources_path(dataset: dataset, type_uri: type.uri))

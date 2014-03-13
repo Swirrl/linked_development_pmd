@@ -16,8 +16,9 @@
 
 		%p
 			This API is designed to be accessible to applications written for the IDS API. With minimal modifications they will be able to access the large collection of documents and meta data resources which we store.
-		%p
-			= link_to "Linked Development API Documentation", linked_development_api_docs_path
+		%ul
+			%li
+				= link_to "Linked Development API Documentation", linked_development_api_docs_path
 
 %section
 	= fullwidth do
@@ -30,7 +31,7 @@
 
 %section
 	= fullwidth do
-		= section_title("Linked Data Dumps")
+		= section_title("Data Dumps")
 		%p
 			We also offer complete downloads of each dataset in zipped n-triples format.
 		%ul

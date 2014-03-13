@@ -36,4 +36,9 @@ module ApplicationHelper
   def data_is_updating?
     LinkedDevelopmentPmd::TemporarilyUnavailableWhenCrawling.update_in_progress?
   end
+
+  def many_samples_label type
+    label = type.type_slug.pluralize.gsub('_', ' ')
+    "All #{label}"
+  end
 end

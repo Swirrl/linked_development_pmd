@@ -1,0 +1,22 @@
+- highlight_in_menu "catalogue"
+- set_page_title "Dataset: #{dataset.title}"
+- page_description dataset.comment
+- page_kind 'dataset metadata'
+- set_pmd_page_class 'dataset'
+
+- additional_formats_for_resource(dataset.uri)
+- format_options = {only_path:false, uri:dataset.uri}
+- additional_format('atom', url_for(format_options.merge(format: 'atom')))
+
+%header{class: (dataset.deprecated? ? "deprecated" : "")}
+	= fullwidth do
+		= badge("dataset")
+		= page_title(dataset.title)
+		= title_uri dataset.uri
+		- if dataset.deprecated?
+			= render 'publish_my_data/shared/deprecation_notice', resource:dataset, description:"dataset"
+
+= render 'publish_my_data/stripes/dataset_metadata', dataset:dataset
+= render 'publish_my_data/stripes/datacube', dataset:dataset
+= render 'stripes/dataset_sample_data', dataset:dataset
+= render 'publish_my_data/stripes/linked_data', resource:dataset, resource_class_name:"dataset"

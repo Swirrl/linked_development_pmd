@@ -11,5 +11,5 @@ LinkedDevelopmentPmd::Application.routes.draw do
   end
 
   mount PublishMyDataEnterprise::Engine, at: "/" , as: 'publish_my_data_enterprise'
-  mount PublishMyData::Engine, at: "/"
+  mount PublishMyData::Engine, at: "/", as: 'publish_my_data'
 end
