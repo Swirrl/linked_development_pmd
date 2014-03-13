@@ -1,6 +1,6 @@
 LinkedDevelopmentPmd::Application.routes.draw do
 
-  get '/', to: redirect('/data'), as: :home # use the data catalogue
+  get '/', to: 'api_doc#home', as: :home # use the data catalogue
 
   scope '/linked-develpment-api' do
     get '/', to: 'api_doc#overview', as: :linked_development_overview_docs

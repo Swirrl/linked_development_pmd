@@ -1,0 +1,47 @@
+- set_page_title "Linked Development"
+- set_pmd_page_class 'doc_home'
+
+%section
+		= fullwidth do
+				= page_title("Linked Development")
+				%p
+						This platform has been developed as an incubator for a number of linked datasets of value to the International Development community.
+						%p
+								It currently hosts data from:
+						%ul
+								%li <a href="http://r4d.dfid.gov.uk/">Research for Development</a>
+								%li <a href="http://www.eldis.org/">ELDIS</a>
+
+				%p
+						And draws upon a number of other key datasets. There are three ways to access the data here:
+						%ul
+								%li Via <a href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> - the query language for linked data
+								%li By dereferencing selected URIs - giving access to human and machine-readable data
+								%li Via a simple API (coming soon) - based on the IDS API for accessing data on publications
+
+%section
+		= fullwidth do
+				= section_title("Why linked data?")
+
+				%p Linked data is an approach to publishing data on the web. Linked data uses URIs to identify entities in a dataset, and returns machine-readable data when those URIs are looked up (dereferenced). When different datasets use shared identifiers to represent items and properties then it becomes easier to combine datasets from difference sources.
+
+				%p Unlike conventional databases or spreadsheet formats, which constrain how data can be represented, forcing it into columns, rows and pre-defined schema, linked data uses a graph structure to represent data, making it very extensible. That means that when data is brought together from different sources it does not have to adopt a lowest common denominator approach to data integration, but allows flexibility in how data is stored and combined.
+
+%section
+		= fullwidth do
+				= section_title("Who are we?")
+				%p
+						The Linked Development project is supported by Research for Development and carried out by Practical Participation. Questions can be directed to tim@practicalparticipation.co.uk. Code for the Linked Development platform can be found on GitHub.
+				%p
+						The platform  recently migrated to <a href="http://swirrl.com/">Swirrl's</a> <a href="http://swirrl.com/publishmydata">Publish My Data</a> platform.
+%section
+		= fullwidth do
+				= section_title("Status")
+				%p
+						The Linked Development site is currently under active development. This should be considered an alpha release.
+				%h3 Recent Updates
+				%ul
+						%li DATE: Migrated to use <a href="http://swirrl.com/">Swirrl's</a> <a href="http://www.swirrl.com/publishmydata">Publish My Data</a> platform.
+						%li DATE: API Rewriten by <a href="http://swirrl.com/">Swirrl</a> using <a href="http://rubyonrails.org/">Ruby on Rails</a>.
+						%li 11th June 2013: Alpha release with basic SPARQL and browse features.
+						%li 10th Jan 2013: Proof of concept release for Research2Impact Hack
