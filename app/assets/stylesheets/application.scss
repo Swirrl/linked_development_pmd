@@ -1,17 +1,19 @@
-$pmdconfig_colour_page_datasets:                                   #285171;
-$pmdconfig_colour_page_dataset:                                    #81bf4d;
-$pmdconfig_colour_page_resource:                                   #f3772e;
-$pmdconfig_colour_page_ontology:                                   #f3772e;
-$pmdconfig_colour_page_concept:                                    #f3772e;
-$pmdconfig_colour_page_type:                                       #3972a2;
-$pmdconfig_colour_page_theme:                                      #54b6f0;
-$pmdconfig_colour_body_text:                                       #374651;
-$pmdconfig_colour_link:                                            #d46728;
-$pmdconfig_colour_link_hover:                                      #f3772e;
-$pmdconfig_colour_link:                                            #f3772e;
-$pmdconfig_colour_link_hover:                                      #e83808;
+$pmdconfig_colour_page_datasets: #285171;
+$pmdconfig_colour_page_dataset: #81bf4d;
+$pmdconfig_colour_page_resource:  #f3772e;
+$pmdconfig_colour_page_ontology: #f3772e;
+$pmdconfig_colour_page_concept: #f3772e;
+$pmdconfig_colour_page_type: #3972a2;
+$pmdconfig_colour_page_theme: #54b6f0;
+$pmdconfig_colour_body_text: #374651;
+$pmdconfig_colour_link: #d46728;
+$pmdconfig_colour_link_hover: #f3772e;
+$pmdconfig_colour_link: #f3772e;
+$pmdconfig_colour_link_hover: #e83808;
 
-footer.app_footer { background: #eee; }
+footer.app_footer {
+	background: #eee;
+}
 
 $pmdconfig_typeface_bodycopy: "Roboto Slab","Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
 
@@ -23,8 +25,23 @@ $pmdconfig_typeface_bodycopy: "Roboto Slab","Calisto MT", "Bookman Old Style", B
 @import "publish_my_data.scss";
 
 .cabi_sample_data {
-		th, td {
-			width: 33%;
-			vertical-align:top;
-		}
+	th, td {
+		width: 33%;
+		vertical-align:top;
+	}
+}
+
+.date{
+	color: #999;
+	display: block;
+	font-size: 0.8em;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	color: #999;
+}
+
+.pmd.documentation h2{
+	border-bottom: 2px solid #eee;
 }
