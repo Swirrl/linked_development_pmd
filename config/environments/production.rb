@@ -81,6 +81,7 @@ end
 Tripod.configure do |config|
   config.data_endpoint = 'http://46.4.78.148/linkeddev/data'
   config.update_endpoint = 'http://46.4.78.148/linkeddev/update'
+  config.response_limit_bytes = 10.megabytes
 end
 
 PublishMyDataEnterprise.configure do |c|
