@@ -94,6 +94,7 @@ GEM
     equivalent-xml (0.4.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
+    execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     fssm (0.2.10)
@@ -235,6 +236,9 @@ GEM
       rdf-turtle
       rest-client
     tzinfo (0.3.39)
+    uglifier (2.4.0)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
@@ -249,3 +253,4 @@ DEPENDENCIES
   rails (= 3.2.15)
   rvm-capistrano
   sentry-raven!
+  uglifier (>= 1.0.3)

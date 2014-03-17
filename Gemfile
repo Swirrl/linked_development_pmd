@@ -14,3 +14,7 @@ group :development do
   gem 'capistrano', '~> 2.0'
   gem 'rvm-capistrano'
 end
+
+group :assets do
+  gem 'uglifier', '>= 1.0.3'
+end
