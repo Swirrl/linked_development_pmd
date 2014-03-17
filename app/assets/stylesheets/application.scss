@@ -10,19 +10,20 @@ $pmdconfig_colour_link: #d46728;
 $pmdconfig_colour_link_hover: #f3772e;
 $pmdconfig_colour_link: #f3772e;
 $pmdconfig_colour_link_hover: #e83808;
+$pmdconfig_scope_global: true;
+$pmdconfig_typeface_bodycopy: "Roboto Slab","Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+
+@import "publish_my_data.scss";
 
 footer.app_footer {
 	background: #eee;
 }
 
-$pmdconfig_typeface_bodycopy: "Roboto Slab","Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
 
 .linkeddev-logo {
 	margin-top: 12px;
 	margin-bottom: 12px;
 }
-
-@import "publish_my_data.scss";
 
 .cabi_sample_data {
 	th, td {
