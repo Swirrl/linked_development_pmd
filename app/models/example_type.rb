@@ -14,7 +14,7 @@ class ExampleType
   end
 
   def self.blacklisted_classes
-    @@exclude ||= Set.new(%w[AnnotationProperty Class DatatypeProperty Label ObjectProperty Ontology Restriction SymmetricProperty Thing TransitiveProperty])
+    @@exclude ||= Set.new(%w[AnnotationProperty ConceptScheme Class DatatypeProperty Label ObjectProperty Ontology Restriction SymmetricProperty Thing TransitiveProperty])
 
     @@exclude
   end
