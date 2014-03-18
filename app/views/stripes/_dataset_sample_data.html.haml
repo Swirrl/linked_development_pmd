@@ -20,6 +20,9 @@
 												%td
 														= type.type_slug
 												%td
-														= link_to sample.label, publish_my_data.show_resource_path(uri:sample.uri)
+														- labels = sample.label
+														- labels.each do |label|
+																= link_to label, publish_my_data.show_resource_path(uri:sample.uri)
+																%br
 												%td
 														= link_to(many_samples_label(type), publish_my_data.list_resources_path(dataset: dataset, type_uri: type.uri))
