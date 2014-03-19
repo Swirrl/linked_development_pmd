@@ -127,13 +127,13 @@
 					Example:
 				Requesting an eldis document by its id (A64559) in JSON format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get/documents/A64559/full.json"
+				$ curl "http://linked-development.org/openapi/eldis/get/documents/A64559/full.json"
 			%p
 				%strong
 					Example:
 				Requesting an r4d document by its id (185225) in XML format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/get/documents/185225/full.xml"
+				$ curl "http://linked-development.org/openapi/r4d/get/documents/185225/full.xml"
 			%p
 				%strong
 					Example:
@@ -195,13 +195,13 @@
 					Example:
 				Requesting all documents from all graphs that cover Europe (Eldis ID C24):
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/all/search/documents/full.json?region=C24"
+				$ curl "http://linked-development.org/openapi/all/search/documents/full.json?region=C24"
 			%p
 				%strong
 					Example:
 				Requesting all R4D documents in JSON (20 at a time) that refer to the DFID <a href="http://devtracker.dfid.gov.uk/projects/GB-1-114192/">Programme for Enhancement of Research Information</a> (Identified by IATI ID: GB-1-112059)
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/search/documents/full.json?iati-identifier=GB-1-112059&num_results=20"
+				$ curl "http://linked-development.org/openapi/r4d/search/documents/full.json?iati-identifier=GB-1-112059&num_results=20"
 
 	= documentation_subsection "Themes" do
 		= documentation_subsubsection "get_all/themes" do
@@ -231,19 +231,19 @@
 					Example:
 				Requesting an eldis theme by its id (C782) in JSON format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get/themes/C782/full.json"
+				$ curl "http://linked-development.org/openapi/eldis/get/themes/C782/full.json"
 			%p
 				%strong
 					Example:
 				Requesting an r4d theme by its id (knowledge_sharing) in XML format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/get/themes/knowledge_sharing/full.xml"
+				$ curl "http://linked-development.org/openapi/r4d/get/themes/knowledge_sharing/full.xml"
 			%p
 				%strong
 					Example:
 				Requesting an r4d theme by its id (knowledge_sharing) from the all graph in XML format at a short level of detail:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/all/get/themes/knowledge_sharing/short.xml"
+				$ curl "http://linked-development.org/openapi/all/get/themes/knowledge_sharing/short.xml"
 		= documentation_subsubsection "count/themes" do
 			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
 			%p Returns the counts of the number of documents associated with each them
@@ -252,19 +252,19 @@
 					Example:
 				Requesting counts of documents associated with all eldis themes in JSON format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/count/documents/theme.json"
+				$ curl "http://linked-development.org/openapi/eldis/count/documents/theme.json"
 			%p
 				%strong
 					Example:
 				Requesting counts of documents associated with all r4d themes in XML format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/count/documents/theme.xml"
+				$ curl "http://linked-development.org/openapi/r4d/count/documents/theme.xml"
 			%p
 				%strong
 					Example:
 				Requesting counts of documents associated with all themes in JSON format, paginated into pages of 2 results at a time starting at offset 10.
 			= codeblock "bash" do
-				$ curl -H "Accept: application/json" "http://linked-development-api.dev/openapi/all/count/documents/theme?num_results=2&start_offset=10"
+				$ curl -H "Accept: application/json" "http://linked-development.org/openapi/all/count/documents/theme?num_results=2&start_offset=10"
 
 	= documentation_subsection "Countries" do
 		= documentation_subsubsection "get_all/countries" do
@@ -275,13 +275,13 @@
 					Example:
 				Requesting all countries at full detail 10 at a time from all graphs in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/all/get_all/countries/full.json"
+				$ curl "http://linked-development.org/openapi/all/get_all/countries/full.json"
 			%p
 				%strong
 					Example:
 				Requesting all countries from eldis, at short detail, 20 at a time in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get_all/countries/short.json"
+				$ curl "http://linked-development.org/openapi/eldis/get_all/countries/short.json"
 		= documentation_subsubsection "get/countries" do
 			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
 			%p Request data on a single country from the specified graph.
@@ -290,13 +290,13 @@
 					Example:
 				Requesting "Nauru" by its ELDIS country ID (A1151) at full detail in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get/countries/A1151.json"
+				$ curl "http://linked-development.org/openapi/eldis/get/countries/A1151.json"
 			%p
 				%strong
 					Example:
 				Requesting "Nauru" by its ELDIS country ID (A1151) at full detail in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get/countries/A1151.json"
+				$ curl "http://linked-development.org/openapi/eldis/get/countries/A1151.json"
 		= documentation_subsubsection "count/countries" do
 			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
 			%p Returns the counts of the number of documents associated with each theme.
@@ -305,19 +305,19 @@
 					Example:
 				Requesting counts of documents associated with all eldis themes in JSON format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/count/documents/country.json"
+				$ curl "http://linked-development.org/openapi/eldis/count/documents/country.json"
 			%p
 				%strong
 					Example:
 				Requesting counts of documents associated with all r4d themes in XML format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/count/documents/country.xml"
+				$ curl "http://linked-development.org/openapi/r4d/count/documents/country.xml"
 			%p
 				%strong
 					Example:
 				Requesting counts of documents associated with all countries in JSON format, paginated into pages of 2 results at a time starting at offset 10.
 			= codeblock "bash" do
-				$ curl -H "Accept: application/json" "http://linked-development-api.dev/openapi/all/count/documents/country?num_results=2&start_offset=10"
+				$ curl -H "Accept: application/json" "http://linked-development.org/openapi/all/count/documents/country?num_results=2&start_offset=10"
 
 	= documentation_subsection "Regions" do
 		= documentation_subsubsection "get_all/regions" do
@@ -328,13 +328,13 @@
 					Example:
 				Requesting all regions at full detail 10 at a time from all graphs in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/all/get_all/regions/full.json"
+				$ curl "http://linked-development.org/openapi/all/get_all/regions/full.json"
 			%p
 				%strong
 					Example:
 				Requesting all regions from eldis, at short detail, 20 at a time in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get_all/regions/short.json"
+				$ curl "http://linked-development.org/openapi/eldis/get_all/regions/short.json"
 		= documentation_subsubsection "get/regions" do
 			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
 			%p Request data on a single region from the specified graph.
@@ -343,13 +343,13 @@
 					Example:
 				Requesting "Nauru" by its ELDIS region ID (A1151) at full detail in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get/regions/A1151.json"
+				$ curl "http://linked-development.org/openapi/eldis/get/regions/A1151.json"
 			%p
 				%strong
 					Example:
 				Requesting "Nauru" by its ELDIS region ID (A1151) at full detail in JSON:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/get/regions/A1151.json"
+				$ curl "http://linked-development.org/openapi/eldis/get/regions/A1151.json"
 		= documentation_subsubsection "count/regions" do
 			%p Supported on <strong>eldis</strong>, <strong>r4d</strong> and <strong>all</strong> graphs.
 			%p Returns the counts of the number of documents associated with each theme.
@@ -358,19 +358,19 @@
 					Example:
 				Requesting counts of documents associated with all eldis themes in JSON format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/eldis/count/documents/region.json"
+				$ curl "http://linked-development.org/openapi/eldis/count/documents/region.json"
 			%p
 				%strong
 					Example:
 				Requesting counts of documents associated with all r4d themes in XML format:
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/count/documents/region.xml"
+				$ curl "http://linked-development.org/openapi/r4d/count/documents/region.xml"
 			%p
 				%strong
 					Example:
 				Requesting counts of documents associated with all regions in JSON format, paginated into pages of 2 results at a time starting at offset 10.
 			= codeblock "bash" do
-				$ curl -H "Accept: application/json" "http://linked-development-api.dev/openapi/all/count/documents/region?num_results=2&start_offset=10"
+				$ curl -H "Accept: application/json" "http://linked-development.org/openapi/all/count/documents/region?num_results=2&start_offset=10"
 
 	= documentation_subsection "Research Outputs" do
 		%p As R4D data splits the research outputs linked to a given IATI identifier into sub-projects, an additional call has been added called 'research_outputs' which shows a list of research outputs for an IATI ID, grouped by their associated project.
@@ -393,7 +393,7 @@
 					Example:
 				Getting all research_projects with a maximum of 10 research_outputs per project, paginated into pages of 20 research_projects at a time.
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/get_all/research_outputs.json?per_project=10&num_results=20"
+				$ curl "http://linked-development.org/openapi/r4d/get_all/research_outputs.json?per_project=10&num_results=20"
 		= documentation_subsubsection "get/research_outputs" do
 			%p Allows searching of research_projects by IATI identifier.  Unlike other <strong>get</strong> calls this can return multiple results. Consequently this means that the content of the response will contain a metadata section as with <strong>get_all</strong> and <strong>search</strong> requests.
 			%table
@@ -413,7 +413,7 @@
 					Example:
 				Getting research_projects associated with DFID "Professional Evidence and Applied Knowledge Services" funding stream, with a maximum of 10 research_outputs per project, paginated into pages of 20 research_projects at a time.
 			= codeblock "bash" do
-				$ curl "http://linked-development-api.dev/openapi/r4d/get/research_outputs/GB-1-114192.json?per_project=10&num_results=20"
+				$ curl "http://linked-development.org/openapi/r4d/get/research_outputs/GB-1-114192.json?per_project=10&num_results=20"
 
 = documentation_section "Errors" do
 	= documentation_subsection "HTTP Error Codes" do
