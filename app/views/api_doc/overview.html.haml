@@ -10,20 +10,27 @@
 
 %section
 	= fullwidth do
-		= section_title("Linked Development API")
-		%p
-			The Linked Development API is a clone of the IDS API.
+		= section_title("Research Documents API")
+		:markdown
+			The Research Documents API (formerly known as the Linked Development API) is a [clone of the IDS API](http://api.ids.ac.uk/docs/).
 
-		%p
-			This API is designed to be accessible to applications written for the IDS API. With minimal modifications they will be able to access the large collection of documents and meta data resources which we store.
+			It has been designed to allow applications written for the Institute for Development Studies API service to be simply modified to talk to a large collection of documents and resources drawn from other datasets including Linked Development.
+
+			This provides API calls to fetch information on themes, documents, regions and countries - and has a simple method for choosing between 'all' available data, or just the data from one of the partners to the Linked Development platform.
+
+			This API returns data objects designed to provide most of the information on a publication, country or theme that an application might need.
 		%ul
 			%li
-				= link_to "Linked Development API Documentation", linked_development_api_docs_path
+				= link_to "Research Documents API Documentation", linked_development_api_docs_path
 
 	= fullwidth do
 		= section_title("Linked Data API")
+		:markdown
+			All data housed in the linked development platform is stored as linked open data, and is additionally accessible via open [linked data standards](http://www.w3.org/standards/semanticweb/data), such as [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework) and [SPARQL](https://en.wikipedia.org/wiki/SPARQL).
 		%p
-			Our linked data is also exposed through a number of documented restful API's and linked data formats.
+			This API exposes more data than is made available via the Research Documents API, and allows for the formulation of more complex queries.
+		%p
+			Additionally our linked data is also exposed through a number of documented restful API's and linked data formats.
 		%ul
 			%li
 				= link_to "Linked Data Documentation", publish_my_data.dataset_path(:eldis, :anchor => "download_the_data")

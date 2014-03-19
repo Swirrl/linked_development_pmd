@@ -7,7 +7,7 @@ module ApplicationHelper
        :highlight => "doc_overview",
        :items => [
                   {
-                   title: "Linked Development API",
+                   title: "Research Documents API",
                    target: main_app.linked_development_api_docs_path,
                    highlight: "linked_dev_docs"
                   },
