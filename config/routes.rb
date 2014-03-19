@@ -2,7 +2,7 @@ LinkedDevelopmentPmd::Application.routes.draw do
 
   get '/', to: 'api_doc#home', as: :home # use the data catalogue
 
-  scope '/linked-develpment-api' do
+  scope '/linked-development-api' do
     get '/', to: 'api_doc#overview', as: :linked_development_overview_docs
     get '/docs', to: 'api_doc#index', as: :linked_development_api_docs
     get '/source_code', to: 'api_doc#source_code', as: :linked_development_source_code
