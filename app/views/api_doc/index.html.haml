@@ -24,6 +24,16 @@
 = documentation_section "Research Documents API" do
 	= documentation_subsection "Accessing the API" do
 		%p The API has been designed to allow applications written for the IDS API to be simply modified to talk to a large collection of documents and resources drawn from across the datasets including in Linked Development.  The API supports both JSON and XML response types across all of our endpoints.
+
+	= documentation_subsection "API Versioning" do
+		%p Our API is versioned to allow consumers time to migrate between major API versions.  Major versions of the API are indicated by subdomains like <strong>v1</strong> or <strong>v2</strong>.  Where the integer component indicates the major API version.
+
+		%p The latest api version can currently be found at <strong>v2.api.linked-development.org</strong>.
+
+		%p If you always want to use the latest API then requests to <strong>api.linked-development.org</strong> will always be 302 redirected to the latest API version, whilst requests to a specific API version will never be redirected, allowing you to lock yourself to a known version.
+
+		%p Old versions of the API may however be deprecated and switched off at our discretion.
+
 	= documentation_subsection "API URL Patterns" do
 		%p We follow the IDS API's URL pattern for modelling our request methods, typically this means that API methods follow the following structure:
 		= codeblock "uri" do
