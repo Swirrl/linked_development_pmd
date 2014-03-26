@@ -85,7 +85,7 @@ Tripod.configure do |config|
 end
 
 PublishMyDataEnterprise.configure do |c|
-  c.aws_access_key_id = 'AKIAIR7BREBM76EWA2WQ'
-  c.aws_secret_access_key = 'NEKNzzkt0wARLMdx7y+x8LZtOmalsrQ5YbPQx9hg'
+  c.aws_access_key_id = 'PUT YOUR KEY HERE'
+  c.aws_secret_access_key = 'PUT YOUR SECRET KEY HERE'
   c.downloads_s3_bucket = 'linkeddev-dumps'
 end
