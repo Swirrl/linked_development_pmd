@@ -16,3 +16,5 @@
 .#*
 
 .DS_Store
+/config/environments/production.rb
+/config/environments/development.rb
